@@ -10,6 +10,15 @@ async function main() {
     GARMIN_CONNECT_PASSWORD,
   } = process.env;
 
+  if (
+    !GARMIN_CN_CONNECT_USERNAME ||
+    !GARMIN_CN_CONNECT_PASSWORD ||
+    !GARMIN_CONNECT_USERNAME ||
+    !GARMIN_CONNECT_PASSWORD
+  ) {
+    throw new Error("Missing environment variables");
+  }
+
   const cn = new GarminConnect(
     {
       username: GARMIN_CN_CONNECT_USERNAME!,
