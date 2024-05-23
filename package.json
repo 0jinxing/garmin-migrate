@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {
-    "migrate": "./bin/migrate"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc"
+    "start": "ts-node ./index.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "garmin",
+    "activity",
+    "migrate",
+    "export",
+    "cn",
+    "global",
+    "fit"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
