@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./index.ts"
+    "start": "tsx ./main.ts"
   },
   "keywords": [
     "garmin",
@@ -19,12 +19,14 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.11.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@garmin/fitsdk": "^21.141.0",
     "dotenv": "^16.4.5",
     "fflate": "^0.8.2",
-    "garmin-connect": "^1.6.2"
+    "garmin-connect": "^1.6.2",
+    "p-retry": "^6.2.0"
   }
 }

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { GarminConnect } from "garmin-connect";
 import { unzipSync } from "fflate";
+import retry from "p-retry";
 
 async function main() {
   const {
@@ -69,4 +70,9 @@ async function main() {
   }
 }
 
-main();
+retry(main, {
+  retries: 5,
+  onFailedAttempt(error) {
+    console.error(error);
+  },
+});
