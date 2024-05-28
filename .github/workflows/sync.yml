@@ -23,4 +23,4 @@ jobs:
         with:
           version: 9
           run_install: true
-      - run: pnpm sync --cn $GARMIN_CN_SECRET --global $GARMIN_SECRET
+      - run: pnpm sync --cn-secret $GARMIN_CN_SECRET --secret $GARMIN_SECRET

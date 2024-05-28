@@ -28,6 +28,9 @@ importers:
 
   packages/connect:
     dependencies:
+      '@garmin/fitsdk':
+        specifier: ^21.141.0
+        version: 21.141.0
       '@inquirer/prompts':
         specifier: ^5.0.4
         version: 5.0.4
@@ -511,6 +514,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@garmin/fitsdk@21.141.0':
+    resolution: {integrity: sha512-bUn7Q1YxetDImfJNKgMltkDROHhMQ6imutjVScjqmTY//le6ZTtdakq9qp+VlqZO/nQPDCL9bAOtKgnbvsFC+w==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -2823,6 +2829,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.4':
     optional: true
+
+  '@garmin/fitsdk@21.141.0': {}
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:

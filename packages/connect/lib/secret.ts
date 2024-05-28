@@ -8,11 +8,13 @@ const args = parse({
   "--domain": String,
 });
 
-(async function () {
+async function main() {
   const token = await authorized(
     args["--username"]!,
     args["--password"]!,
     args["--domain"]! as GarminDomain
   );
   console.log(encodeToken(token));
-})();
+}
+
+main();

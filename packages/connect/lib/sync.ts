@@ -1,28 +1,25 @@
 import parse from "arg";
 import { unzipSync } from "fflate";
 import { connect, decodeToken } from "../utils";
+import { Activity } from "../types";
 
-const args = parse({ "--global": String, "--cn": String });
+const args = parse({ "--secret": String, "--cn-secret": String });
 
 async function getActivities(
   client: Awaited<ReturnType<typeof connect>>,
   start: number
 ) {
   return await client
-    .get<
-      Array<{
-        activityId: string;
-        activityName: string;
-        beginTimestamp: number;
-      }>
-    >(client.uri.gc_activities, { params: { start, limit: 200 } })
+    .get<Array<Activity>>(client.uri.gc_activities, {
+      params: { start, limit: 200 },
+    })
     .then(({ data }) => data);
 }
 
-(async function () {
+async function main() {
   const [cn, global] = await Promise.all([
-    connect("garmin.cn", decodeToken(args["--cn"]!)),
-    connect("garmin.com", decodeToken(args["--global"]!)),
+    connect("garmin.cn", decodeToken(args["--cn-secret"]!)),
+    connect("garmin.com", decodeToken(args["--secret"]!)),
   ]);
   let count = 0;
 
@@ -60,4 +57,6 @@ async function getActivities(
   }
 
   console.log(`sync ${count} activities`);
-})();
+}
+
+main();
