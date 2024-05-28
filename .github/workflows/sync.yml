@@ -1,0 +1,26 @@
+name: Garmin Sync Cron
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    env:
+      GARMIN_CN_SECRET: ${{ secrets.GARMIN_CN_SECRET }}
+      GARMIN_SECRET: ${{ secrets.GARMIN_SECRET }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: true
+      - run: pnpm sync --cn $GARMIN_CN_SECRET --global $GARMIN_SECRET
