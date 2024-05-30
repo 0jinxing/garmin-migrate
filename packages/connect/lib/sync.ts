@@ -1,7 +1,7 @@
 import parse from "arg";
 import { unzipSync } from "fflate";
 import { connect, decodeToken } from "../utils";
-import { Activity } from "../types";
+import { Activity } from "@gc/types";
 
 const args = parse({ "--secret": String, "--cn-secret": String });
 
@@ -39,7 +39,9 @@ async function main() {
     const download = cn.uri.gc_download_activity + "/" + cur.activityId;
 
     const unzipped = unzipSync(
-      (await cn.get<Buffer>(download, { responseType: "arraybuffer" })).data
+      await cn
+        .get<Buffer>(download, { responseType: "arraybuffer" })
+        .then((r) => r.data)
     );
 
     const buf = Object.values(unzipped)[0] as Uint8Array;

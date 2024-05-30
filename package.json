@@ -5,15 +5,7 @@
   "scripts": {
     "sync": "pnpm --filter=connect sync"
   },
-  "keywords": [
-    "garmin",
-    "activity",
-    "migrate",
-    "export",
-    "cn",
-    "global",
-    "fit"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC"
 }

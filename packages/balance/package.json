@@ -11,9 +11,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@builder.io/qwik": "^1.5.5",
-    "@qwikdev/astro": "^0.5.15",
+    "@astrojs/solid-js": "^4.2.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@gc/types": "workspace:*",
+    "@types/d3": "^7.4.3",
     "astro": "^4.9.1",
+    "chart.js": "^4.4.3",
+    "d3": "^7.9.0",
+    "ol": "^9.2.4",
+    "solid-js": "^1.8.17",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   }
 }

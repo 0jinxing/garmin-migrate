@@ -1,11 +1,8 @@
 export type Activity = {
   activityId: number;
   activityName: string;
-  startTimeLocal: string;
-  startTimeGMT: string;
   distance: number;
   duration: number;
-  elapsedDuration: number;
   movingDuration: number;
   elevationGain: number;
   elevationLoss: number;
@@ -13,7 +10,7 @@ export type Activity = {
   maxSpeed: number;
   startLatitude: number;
   startLongitude: number;
-  hasPolyline: boolean;
+  calories: number;
   averageHR: number;
   maxHR: number;
   averageRunningCadenceInStepsPerMinute: number;
@@ -21,7 +18,6 @@ export type Activity = {
   steps: number;
   timeZoneId: number;
   beginTimestamp: number;
-  sportTypeId: number;
   avgStrideLength: number;
   minTemperature: number;
   maxTemperature: number;
@@ -34,9 +30,18 @@ export type Activity = {
   endLatitude: number;
   endLongitude: number;
   minActivityLapDuration: number;
-  purposeful: boolean;
-  manualActivity: boolean;
-  autoCalcCalories: boolean;
-  elevationCorrected: boolean;
-  atpActivity: boolean;
+  hasPolyline: boolean;
+};
+
+export type Mesg = {
+  positionLat?: number;
+  positionLong?: number;
+  timestamp: string;
+  distance: number;
+  enhancedSpeed: number;
+  enhancedAltitude: number;
+  heartRate: number;
+  cadence: number;
+  temperature: number;
+  fractionalCadence: number;
 };
