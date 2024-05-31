@@ -1,0 +1,27 @@
+---
+import dayjs from "dayjs";
+import activities from "../../activities.json";
+
+interface Params {
+  year: string;
+}
+
+export function getStaticPaths() {
+  const paths = activities.map(({ beginTimestamp }) => ({
+    params: { year: dayjs(beginTimestamp).format("YYYY") },
+  }));
+
+  return Array.from(new Set(paths));
+}
+
+const { year } = Astro.params as Params;
+
+const activitiesInYear = activities.filter(
+  ({ beginTimestamp }) => dayjs(beginTimestamp).format("YYYY") === year
+);
+---
+
+<div>
+  <!-- 年概览 -->
+  {activitiesInYear.length}
+</div>

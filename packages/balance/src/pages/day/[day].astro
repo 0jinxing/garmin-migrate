@@ -1,0 +1,45 @@
+---
+import dayjs from "dayjs";
+import activities from "../../activities.json";
+
+interface Params {
+  day: string;
+}
+
+export function getStaticPaths() {
+  const paths = activities.map(({ beginTimestamp }) => ({
+    params: { day: dayjs(beginTimestamp).format("YYYY-MM-DD") },
+  }));
+
+  return Array.from(new Set(paths));
+}
+
+const { day } = Astro.params as Params;
+
+const activitiesByDay = activities.filter(
+  ({ beginTimestamp }) => dayjs(beginTimestamp).format("YYYY-MM-DD") === day
+);
+
+// 最近7天
+const recent7Days = Array.from({ length: 7 }, (_, i) =>
+  dayjs(day).subtract(i, "day").format("YYYY-MM-DD")
+)
+  .map((day) =>
+    activities.filter(
+      ({ beginTimestamp }) => dayjs(beginTimestamp).format("YYYY-MM-DD") === day
+    )
+  )
+  .flat()
+  .filter(Boolean);
+---
+
+<div>
+  <!-- 单天 + 最近7天 + 三圈 -->
+  <div>
+    {activitiesByDay.length}
+  </div>
+
+  <div>
+    {recent7Days.length}
+  </div>
+</div>

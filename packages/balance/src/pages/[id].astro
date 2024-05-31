@@ -1,0 +1,17 @@
+---
+import activities from "../activities.json";
+
+interface Params {
+  id: number;
+}
+
+export function getStaticPaths() {
+  return activities.map((a) => ({ params: { id: a.activityId } }));
+}
+
+const { id } = Astro.params as Params;
+---
+<div>
+  <!-- 单条 -->
+  {id}
+</div>

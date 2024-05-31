@@ -1,4 +1,4 @@
-export type Activity = {
+export type Act = {
   activityId: number;
   activityName: string;
   distance: number;
@@ -45,3 +45,5 @@ export type Mesg = {
   temperature: number;
   fractionalCadence: number;
 };
+
+export type ActWithMesgs = Act & { mesgs: Mesg[] };

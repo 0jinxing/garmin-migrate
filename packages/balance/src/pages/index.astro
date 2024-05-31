@@ -3,10 +3,12 @@ import Layout from "../layouts/layout.astro";
 import activities from "../activities.json";
 import { PlotAreaChart } from "../components/plotarea-chart";
 import { PolylineMap } from "../components/polyline-map";
+import { Heatmap } from "../components/heatmap";
 ---
 
 <Layout title="Welcome to Astro.">
   <div class="flex gap-4 flex-wrap">
+    <Heatmap activities={activities} client:load />
     {
       activities.map((activity) => (
         <div class="bg-gray-100 rounded-lg shadow-md">

@@ -16,12 +16,7 @@ export const PlotAreaChart = ({ mesgs }: PlotAreaChartProps) => {
 
     const data: ChartData = {
       labels: labels,
-      datasets: [
-        {
-          label: "Heart Rate",
-          data: mesgs.map((m) => m.heartRate),
-        },
-      ],
+      datasets: [{ label: "Heart Rate", data: mesgs.map((m) => m.heartRate) }],
     };
 
     new Chart(element()!, {
@@ -29,9 +24,7 @@ export const PlotAreaChart = ({ mesgs }: PlotAreaChartProps) => {
       data,
       options: {
         layout: { autoPadding: true },
-        plugins: {
-          legend: { display: false },
-        },
+        plugins: { legend: { display: false } },
       },
     });
   });
