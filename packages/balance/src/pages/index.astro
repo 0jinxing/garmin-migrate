@@ -1,10 +1,15 @@
 ---
 import Layout from "../layouts/layout.astro";
 import activities from "../activities.json";
-import { PlotAreaChart } from "../components/plotarea-chart";
-import { PolylineMap } from "../components/polyline-map";
+import { Polyline } from "../components/polyline";
 import { Heatmap } from "../components/heatmap";
 ---
+<!-- 
+  // 今年 按周
+  今年最近 7 次（里程 + 时间）的活动 ｜ 最近一次的地图（没记录到的话就折线图 🤔）
+                                | 该月的日历图
+-->
+
 
 <Layout title="Welcome to Astro.">
   <div class="flex gap-4 flex-wrap">
@@ -13,9 +18,9 @@ import { Heatmap } from "../components/heatmap";
       activities.map((activity) => (
         <div class="bg-gray-100 rounded-lg shadow-md">
           {activity.hasPolyline ? (
-            <PolylineMap mesgs={activity.mesgs} client:load />
+            <Polyline mesgs={activity.mesgs} client:load />
           ) : (
-            <PlotAreaChart mesgs={activity.mesgs} client:load />
+            <Polyline mesgs={[]} client:load />
           )}
         </div>
       ))

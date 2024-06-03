@@ -12,7 +12,7 @@ import Stroke from "ol/style/Stroke";
 import VectorSource from "ol/source/Vector";
 import "ol/ol.css";
 
-export type PolylineMapProps = { mesgs: Mesg[] };
+export type PolylineProps = { mesgs: Mesg[] };
 
 function mesgsToPolylineLayer(mesgs: Mesg[]) {
   const coordinates: [long: number, lat: number, weight: number][] = mesgs
@@ -42,7 +42,7 @@ function mesgsToPolylineLayer(mesgs: Mesg[]) {
   return new VectorLayer({ source: new VectorSource({ features }) });
 }
 
-export const PolylineMap = ({ mesgs: fit }: PolylineMapProps) => {
+export const Polyline = ({ mesgs: fit }: PolylineProps) => {
   const [element, setElement] = createSignal<HTMLElement>();
 
   onMount(() => {

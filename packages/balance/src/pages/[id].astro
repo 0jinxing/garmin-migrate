@@ -11,7 +11,15 @@ export function getStaticPaths() {
 
 const { id } = Astro.params as Params;
 ---
+
 <div>
-  <!-- 单条 -->
+  <!--
+    if 有记录到 gps
+      地图 + 折线图（联动）
+    else 没有记录到 gps
+      最近 7 天日历图 + 折线图
+    
+    一些统计数据
+  -->
   {id}
 </div>
